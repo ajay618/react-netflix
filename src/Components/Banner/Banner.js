@@ -11,6 +11,12 @@ function Banner() {
       setMovie(response.data.results[randomIndex])
       });
   }, []);
+
+  const limitOverview = (overview) => {
+    if (!overview) return '';
+    const sentences = overview.split('. ');
+    return sentences.slice(0, 2).join('. ') ;
+  };
   
   return (
     <div
@@ -22,7 +28,7 @@ function Banner() {
                <button className='button'>Play</button>
                <button className='button'>My List</button>
             </div>
-            <h1 className='describtion'>{movie ? movie.overview : ' '}</h1>
+            <h1 className='describtion'>{movie ? limitOverview(movie.overview) : ' '}</h1>
         </div> 
         <div className="fade_bottom">
         </div>    
